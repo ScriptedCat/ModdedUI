@@ -1,3 +1,12 @@
+-- // Vars
+local Format = "https://raw.githubusercontent.com/ScriptedCat/ModdedUI/GamePatches/%d.lua"
+
+-- // Attempt to load a patch for the game
+local Success, _ = pcall(function()
+    local URL = Format:format(game.PlaceId)
+    loadstring(game:HttpGet(URL))()
+end)
+
 -- // Load default otherwise
 if (not Success) then
     loadstring(game:HttpGet("https://raw.githubusercontent.com/ScriptedCat/ModdedUI/main/Module.lua"))()
