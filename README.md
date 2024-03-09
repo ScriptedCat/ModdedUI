@@ -1,4 +1,2 @@
-# Aiming
- A module that helps you create "Aiming" scripts.
+# Aiming UI Modded Version by cat.py
 
-[docs](https://stefanuk12.github.io/Aiming/)
