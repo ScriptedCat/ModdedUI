@@ -1,16 +1,32 @@
--- // Vars
-local Format = "https://raw.githubusercontent.com/Stefanuk12/ROBLOX/master/Universal/Aiming/GamePatches/%d.lua"
+return function(Type, PatchName)
+    -- // Failsafing
+    do
+        -- // Valid Type
+        Type = Type or "Module"
+        assert(Type == "NPC" or Type == "Module", "invalid type for module (NPC or Module)")
 
--- // Attempt to load a patch for the game
-local Success, _ = pcall(function()
-    local URL = Format:format(game.PlaceId)
-    loadstring(game:HttpGet(URL))()
-end)
+        -- // Valid PatchName
+        PatchName = PatchName or tostring(game.PlaceId)
+        local typeofPatchName = typeof(PatchName)
+        local errorFormat = "invalid type for %s (expected %s, got %s)"
+        assert(typeofPatchName == "string", errorFormat:format("PatchName", "string", typeofPatchName))
+    end
 
--- // Load default otherwise
-if (not Success) then
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/ScriptedCat/ModdedUI/main/Module.lua"))()
+    -- // Vars
+    local PatchFormat = "https://raw.githubusercontent.com/Stefanuk12/Aiming/main/GamePatches/%s/%s.lua"
+
+    -- // Attempt to load a patch for the game
+    local Success, _ = pcall(function()
+        local URL = PatchFormat:format(Type, PatchName)
+        loadstring(game:HttpGet(URL))()
+    end)
+
+    -- // Load default otherwise
+    if (not Success) then
+        local ModuleFormat = "https://raw.githubusercontent.com/Stefanuk12/Aiming/main/%s.lua"
+        loadstring(game:HttpGet(ModuleFormat:format(Type)))()
+    end
+
+    -- // Return
+    return (Type == "Module" and Aiming or AimingNPC)
 end
-
--- // Return
-return Aiming
