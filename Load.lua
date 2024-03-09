@@ -9,7 +9,7 @@ end)
 
 -- // Load default otherwise
 if (not Success) then
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/Stefanuk12/ROBLOX/master/Universal/Aiming/Module.lua"))()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/ScriptedCat/ModdedUI/main/Module.lua"))()
 end
 
 -- // Return
