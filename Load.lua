@@ -1,9 +1,7 @@
-    -- // Load default otherwise
-    if (not Success) then
-        local ModuleFormat = "https://raw.githubusercontent.com/ScriptedCat/ModdedUI/main/%s.lua"
-        loadstring(game:HttpGet(ModuleFormat:format(Type)))()
-    end
-
-    -- // Return
-    return (Type == "Module" and Aiming or AimingNPC)
+-- // Load default otherwise
+if (not Success) then
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/ScriptedCat/ModdedUI/main/Module.lua"))()
 end
+
+-- // Return
+return Aiming
