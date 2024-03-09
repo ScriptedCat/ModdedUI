@@ -6,7 +6,7 @@ local SaveManager = loadstring(game:HttpGet(LinoriaRepo .. "addons/SaveManager.l
 
 local Aiming = getgenv().Aiming
 if (not Aiming) then
-    Aiming = loadstring(game:HttpGet("https://raw.githubusercontent.com/Stefanuk12/Aiming/main/Load.lua"))()()
+    Aiming = loadstring(game:HttpGet("https://raw.githubusercontent.com/ScriptedCat/ModdedUI/main/Load.lua"))()()
 end
 repeat wait() until Aiming.Loaded
 
